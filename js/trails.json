@@ -1,0 +1,102 @@
+[
+    {
+      "id": 1,
+      "name": "Cedar Mesa Trail",
+      "location": "San Juan County, UT",
+      "length": 6.4,
+      "difficulty": "moderate",
+      "activity": "hiking",
+      "rating": 4.5,
+      "features": ["canyon", "views", "pet-friendly"]
+    },
+    {
+      "id": 2,
+      "name": "Lake Powell Paddle Route",
+      "location": "San Juan County, UT",
+      "length": 4.2,
+      "difficulty": "easy",
+      "activity": "kayaking",
+      "rating": 4.8,
+      "features": ["lake", "scenic", "wildlife"]
+    },
+    {
+      "id": 3,
+      "name": "Valley of the Gods Loop",
+      "location": "San Juan County, UT",
+      "length": 17.0,
+      "difficulty": "easy",
+      "activity": "sightseeing",
+      "rating": 4.9,
+      "features": ["scenic drive", "desert", "photography"]
+    },
+    {
+      "id": 4,
+      "name": "Goosenecks Overlook Trail",
+      "location": "San Juan County, UT",
+      "length": 0.8,
+      "difficulty": "easy",
+      "activity": "hiking",
+      "rating": 4.7,
+      "features": ["viewpoint", "short", "family-friendly"]
+    },
+    {
+      "id": 5,
+      "name": "Comb Ridge Hike",
+      "location": "San Juan County, UT",
+      "length": 5.6,
+      "difficulty": "hard",
+      "activity": "hiking",
+      "rating": 4.4,
+      "features": ["ridge", "archaeological", "remote"]
+    },
+    {
+      "id": 6,
+      "name": "San Juan River Float",
+      "location": "San Juan County, UT",
+      "length": 12.0,
+      "difficulty": "moderate",
+      "activity": "kayaking",
+      "rating": 4.6,
+      "features": ["river", "float trip", "wildlife"]
+    },
+    {
+      "id": 7,
+      "name": "Mule Canyon Ruins Trail",
+      "location": "San Juan County, UT",
+      "length": 1.4,
+      "difficulty": "easy",
+      "activity": "hiking",
+      "rating": 4.3,
+      "features": ["ruins", "history", "short"]
+    },
+    {
+      "id": 8,
+      "name": "Natural Bridges Loop Drive",
+      "location": "San Juan County, UT",
+      "length": 9.0,
+      "difficulty": "easy",
+      "activity": "sightseeing",
+      "rating": 4.9,
+      "features": ["bridges", "drive", "scenic"]
+    },
+    {
+      "id": 9,
+      "name": "Butler Wash Petroglyphs Trail",
+      "location": "San Juan County, UT",
+      "length": 1.0,
+      "difficulty": "easy",
+      "activity": "hiking",
+      "rating": 4.2,
+      "features": ["petroglyphs", "cultural", "family-friendly"]
+    },
+    {
+      "id": 10,
+      "name": "Edge of the Cedars Pathway",
+      "location": "Blanding, UT",
+      "length": 0.5,
+      "difficulty": "easy",
+      "activity": "sightseeing",
+      "rating": 4.1,
+      "features": ["museum", "accessible", "educational"]
+    }
+  ]

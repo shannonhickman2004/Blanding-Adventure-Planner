@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>San Juan County Adventure Planner</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+
+
+</head>
+
+<body>
+    <header>
+        <button id="toggleDarkMode" class="dark-toggle">🌙 Dark Mode</button>
+        <h1>San Juan County Adventure Planner</h1>
+        <input type="text" id="locationInput" placeholder="Enter location" />
+        <nav>
+            <button data-activity="hiking">Hiking</button>
+            <button data-activity="kayaking">Kayaking</button>
+            <button data-activity="sightseeing">Sightseeing</button>
+          </nav>
+          
+    </header>
+
+    <main>
+        <section class="map-weather">
+            <div id="map">Map (Google Maps)</div>
+            <div class="weather">
+                <h2>Weather</h2>
+                <div id="currentWeather">Current weather</div>
+                <div id="forecast">3-day forecast</div>
+            </div>
+        </section>
+
+        <section class="filter-sort">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+              <option value="">-- Select --</option>
+              <option value="distance">Distance</option>
+              <option value="difficulty">Difficulty</option>
+              <option value="rating">Rating</option>
+            </select>
+          
+            <button id="toggleSortDirection">⬆ Asc</button>
+            <button id="resetSort">Reset</button>
+          
+            <label for="difficultyFilter">Difficulty:</label>
+            <select id="difficultyFilter">
+              <option value="">All</option>
+              <option value="easy">Easy</option>
+              <option value="moderate">Moderate</option>
+              <option value="hard">Hard</option>
+            </select>
+          </section>
+
+        <section class="trails">
+            <h2>Trails</h2>
+            <div id="trailsContainer">Loading trails...</div>
+        </section>
+
+        <section class="accommodations">
+            <h2>Accommodations</h2>
+            <ul id="accommodationsList">
+                <li>Sample Campground</li>
+                <li>Desert Inn</li>
+                <li>Sky Ridge Cabins</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <a href="about.html">About the App</a> |
+        <a href="favorites.html">★ View Favorites</a>
+    </footer>
+    <script type="module" src="js/main.js"></script>
+
+    <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS3EH_1kajNpiqIXDySIpjRpjJ7izTq-A&callback=initMap"
+    
+  ></script>
+</body>
+
+</html>
