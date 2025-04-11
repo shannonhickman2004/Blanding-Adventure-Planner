@@ -30,6 +30,6 @@ export function initMap(lat = 37.625, lon = -109.478, zoom = 9) {
 }
 
 // 👇 Add this to make the function global so Google Maps can call it
-window.initMap = initMap;
+window.initMap = () => initMap();
 
 
