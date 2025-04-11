@@ -148,20 +148,35 @@ export async function displayWeather(lat = 37.625, lon = -109.478) {
     const weather = await getWeather(lat, lon);
     const forecast = await getForecast(lat, lon);
 
+    const currentIcon = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+
     currentEl.innerHTML = `
-      <p><strong>${weather.name}</strong>: ${weather.weather[0].description}</p>
-      <p>Temp: ${weather.main.temp} °F</p>
-      <p>Wind: ${weather.wind.speed} mph</p>
+      <div class="weather-item">
+        <img src="${currentIcon}" alt="${weather.weather[0].description}" />
+        <div>
+          <div><strong>${weather.name}</strong></div>
+          <div>${weather.weather[0].description}</div>
+          <div>${weather.main.temp.toFixed(1)} °F</div>
+          <div>Wind: ${weather.wind.speed} mph</div>
+        </div>
+      </div>
     `;
 
-    const forecastDays = forecast.list.filter((_, i) => i % 8 === 0).slice(0, 3);
-    forecastEl.innerHTML = forecastDays.map(day => `
-      <div>
-        <p>${new Date(day.dt_txt).toLocaleDateString()}</p>
-        <p>${day.weather[0].description}</p>
-        <p>Temp: ${day.main.temp} °F</p>
-      </div>
-    `).join('');
+    const forecastDays = forecast.list.filter(f => f.dt_txt.includes("12:00:00")).slice(0, 3);
+    forecastEl.innerHTML = forecastDays.map(day => {
+      const icon = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
+      const date = new Date(day.dt_txt).toLocaleDateString(undefined, { weekday: 'long' });
+      return `
+        <div class="weather-item">
+          <img src="${icon}" alt="${day.weather[0].description}" />
+          <div>
+            <div class="forecast-day">${date}</div>
+            <div>${day.weather[0].description}</div>
+            <div>${day.main.temp.toFixed(1)} °F</div>
+          </div>
+        </div>
+      `;
+    }).join('');
   } catch (err) {
     currentEl.textContent = 'Error loading weather.';
     forecastEl.textContent = '';
