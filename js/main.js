@@ -1,16 +1,19 @@
 import { loadTrails, displayWeather, setupTrailControls } from './ui.js';
 
+let originalTrails = []; // 🔁 Keep unfiltered reference
+
 document.addEventListener('DOMContentLoaded', () => {
     let currentActivity = ''; // ✅ Tracks which activity is currently selected
 
     fetch('js/trails.json')
         .then(res => res.json())
         .then(trails => {
+            originalTrails = [...trails];
+            window.allTrails = [...trails];
             loadTrails(trails);
             console.log('Loaded trails:', trails);
 
             setupTrailControls();
-            window.allTrails = trails;
 
             // ✅ Activity filter button toggle logic
             document.querySelectorAll('[data-activity]').forEach(button => {
@@ -23,13 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (currentActivity === type) {
                         // 🔄 If the same button is clicked again, clear the filter
                         currentActivity = '';
-                        loadTrails(window.allTrails);
+                        window.allTrails = [...originalTrails];
+                        loadTrails(originalTrails);
                     } else {
                         // ✅ Apply filter for new activity type
                         currentActivity = type;
-                        const filtered = window.allTrails.filter(t =>
+                        const filtered = originalTrails.filter(t =>
                             t.activity?.toLowerCase() === type.toLowerCase()
                         );
+                        window.allTrails = [...filtered];
                         loadTrails(filtered);
 
                         // Highlight the active button
@@ -59,8 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-import { loadFavoritesView } from './ui.js';
-
-document.getElementById('viewFavoritesBtn').addEventListener('click', () => {
-  loadFavoritesView();
-});
+// 🌐 Wait for Google Maps to load before calling initMap
+function waitForGoogleMaps(callback) {
+    if (window.google && window.google.maps) {
+      callback();
+    } else {
+      setTimeout(() => waitForGoogleMaps(callback), 100);
+    }
+  }
+  
+  waitForGoogleMaps(() => {
+    import('./api.js').then(module => {
+      module.initMap(); // ✅ Calls your existing exported initMap()
+    });
+  });
