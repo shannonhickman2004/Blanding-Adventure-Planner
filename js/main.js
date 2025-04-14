@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setupTrailControls();
 
+            // ✅ Hook up View Favorites button under nav
+            const favoritesBtn = document.getElementById('viewFavoritesBtn');
+            if (favoritesBtn) {
+                favoritesBtn.addEventListener('click', () => {
+                    import('./ui.js').then(module => {
+                        module.loadFavoritesView();
+                    });
+                });
+            }
+
             // ✅ Activity filter button toggle logic
             document.querySelectorAll('[data-activity]').forEach(button => {
                 button.addEventListener('click', () => {
@@ -67,14 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // 🌐 Wait for Google Maps to load before calling initMap
 function waitForGoogleMaps(callback) {
     if (window.google && window.google.maps) {
-      callback();
+        callback();
     } else {
-      setTimeout(() => waitForGoogleMaps(callback), 100);
+        setTimeout(() => waitForGoogleMaps(callback), 100);
     }
-  }
-  
-  waitForGoogleMaps(() => {
+}
+
+waitForGoogleMaps(() => {
     import('./api.js').then(module => {
-      module.initMap(); // ✅ Calls your existing exported initMap()
+        module.initMap(); // ✅ Calls your existing exported initMap()
     });
-  });
+});
