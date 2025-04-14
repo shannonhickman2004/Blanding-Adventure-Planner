@@ -1,5 +1,5 @@
 :root {
-    --primary: #7a2e1c;
+    --primary: #8a4520;
     --secondary: #4f3d27;
     --accent: #5299c7;
     --light: #f4f4f4;
@@ -175,9 +175,19 @@
   footer {
     text-align: center;
     padding: 1rem;
-    background: var(--secondary);
+    background: var(--primary);
     color: white;
     margin-top: 2rem;
+  }
+
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+    color: var(--accent); /* optional: adds a nice hover color */
   }
 
   .dark-toggle {
@@ -199,6 +209,22 @@
       transform: translateY(0);
     }
   }
+
+  .accommodations ul {
+    list-style: disc;
+    margin-left: 1.5rem; /* Indent like the rest of your page */
+    padding-left: 0.5rem;
+  }
+  
+  .accommodations a {
+    color: var(--dark); /* Use the default body text color */
+    text-decoration: none;
+  }
+  
+  .accommodations a:hover {
+    color: var(--accent);  /* Optional: give it a slight color pop on hover */
+    text-decoration: underline;
+  }
   
   @media (max-width: 768px) {
     .map-weather {
@@ -219,4 +245,11 @@
       flex-direction: column;
       align-items: flex-start;
     }
+
+    .dark-toggle {
+        position: static;
+        display: block;
+        margin: 0 auto 1rem auto;
+        text-align: center;
+      }
   }
